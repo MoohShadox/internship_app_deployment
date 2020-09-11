@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block extra_head %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Album example for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+  </head>
+{% endblock %}
+
+{% block content %}
+    <body>
+
+    <main role="main">
+
+
+
+      <section class="mt-5 text-left">
+        <div class="container w-25">
+            <br/>
+          <h1 class="jumbotron-heading">Effectuer une recherche </h1>
+            <form action="{% url "core:get_choice" %}" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-primary my-2" type="submit" value="Rechercher">
+            </form>
+        </div>
+      </section>
+
+
+    </main>
+  </body>
+
+{% endblock %}
+
+

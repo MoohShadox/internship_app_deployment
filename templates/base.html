@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+    <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+    @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+    body {
+        font-family: 'Roboto', sans-serif;
+      }
+
+
+
+    /* Styling Checkbox Starts */
+    .checkbox-label {
+        display: block;
+        position: relative;
+        margin: auto;
+        cursor: pointer;
+        font-size: 22px;
+        line-height: 24px;
+        height: 24px;
+        width: 24px;
+        clear: both;
+    }
+
+    .checkbox-label input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .checkbox-label .checkbox-custom {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 24px;
+        width: 24px;
+        background-color: transparent;
+        border-radius: 5px;
+      	transition: all 0.3s ease-out;
+      	-webkit-transition: all 0.3s ease-out;
+      	-moz-transition: all 0.3s ease-out;
+      	-ms-transition: all 0.3s ease-out;
+      	-o-transition: all 0.3s ease-out;
+        border: 2px solid #C0C0C0;
+    }
+
+
+    .checkbox-label input:checked ~ .checkbox-custom {
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        -webkit-transform: rotate(0deg) scale(1);
+        -ms-transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1);
+        opacity:1;
+        border: 2px solid #C0C0C0;
+    }
+
+
+    .checkbox-label .checkbox-custom::after {
+        position: absolute;
+        content: "";
+        left: 12px;
+        top: 12px;
+        height: 0px;
+        width: 0px;
+        border-radius: 5px;
+        border: solid #C0C0C0;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(0deg) scale(0);
+        -ms-transform: rotate(0deg) scale(0);
+        transform: rotate(0deg) scale(0);
+        opacity:1;
+      	transition: all 0.3s ease-out;
+      	-webkit-transition: all 0.3s ease-out;
+      	-moz-transition: all 0.3s ease-out;
+      	-ms-transition: all 0.3s ease-out;
+      	-o-transition: all 0.3s ease-out;
+    }
+
+
+    .checkbox-label input:checked ~ .checkbox-custom::after {
+      -webkit-transform: rotate(45deg) scale(1);
+      -ms-transform: rotate(45deg) scale(1);
+      transform: rotate(45deg) scale(1);
+      opacity:1;
+      left: 8px;
+      top: 3px;
+      width: 6px;
+      height: 12px;
+      border: solid #009BFF;
+      border-width: 0 2px 2px 0;
+      background-color: transparent;
+      border-radius: 0;
+    }
+
+
+
+    /* For Ripple Effect */
+    .checkbox-label .checkbox-custom::before {
+        position: absolute;
+        content: "";
+        left: 10px;
+        top: 10px;
+        width: 0px;
+        height: 0px;
+        border-radius: 5px;
+        border: 2px solid #FFFFFF;
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+    }
+
+    .checkbox-label input:checked ~ .checkbox-custom::before {
+        left: -3px;
+        top: -3px;
+        width: 24px;
+        height: 24px;
+        border-radius: 5px;
+        -webkit-transform: scale(3);
+        -ms-transform: scale(3);
+        transform: scale(3);
+        opacity:0;
+        z-index: 999;
+        transition: all 0.3s ease-out;
+      	-webkit-transition: all 0.3s ease-out;
+      	-moz-transition: all 0.3s ease-out;
+      	-ms-transition: all 0.3s ease-out;
+      	-o-transition: all 0.3s ease-out;
+    }
+
+
+
+
+    /* Style for Circular Checkbox */
+    .checkbox-label .checkbox-custom.circular {
+        border-radius: 50%;
+        border: 2px solid #FFFFFF;
+    }
+
+    .checkbox-label input:checked ~ .checkbox-custom.circular {
+        background-color: #FFFFFF;
+        border-radius: 50%;
+        border: 2px solid #FFFFFF;
+    }
+    .checkbox-label input:checked ~ .checkbox-custom.circular::after {
+        border: solid #0067FF;
+        border-width: 0 2px 2px 0;
+    }
+    .checkbox-label .checkbox-custom.circular::after {
+        border-radius: 50%;
+    }
+
+    .checkbox-label .checkbox-custom.circular::before {
+        border-radius: 50%;
+        border: 2px solid #FFFFFF;
+    }
+
+    .checkbox-label input:checked ~ .checkbox-custom.circular::before {
+        border-radius: 50%;
+    }
+
+  </style>
+
+</head>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-2">
+      <a class="navbar-brand" href="#"></a>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "core:home" %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "core:prev" %}">Suggestions</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="{% url "core:selected" %}">Selected Items</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" target="_blank" href="/admin/">Admin Panel</a>
+            </li>
+        </ul>
+
+          <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                  <a class="nav-link"  href="{% url "core:dl_csv" %}">
+                      Download
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                          <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                      </svg>
+                  </a>
+              </li>
+          </ul>
+      </div>
+
+</nav>
+
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger mt-5 pt-3" role="alert">
+        {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+{% block content %}
+
+{% endblock %}
+
+</html>
